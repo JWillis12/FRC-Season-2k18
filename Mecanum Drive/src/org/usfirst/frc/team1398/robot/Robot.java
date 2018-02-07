@@ -22,7 +22,7 @@ public class Robot extends IterativeRobot {
 	private static final int kJoystickChannel = 0;
 
 	private MecanumDrive m_robotDrive;
-	private Joystick m_stick;
+	private Joystick driveStick;
 
 	@Override
 	public void robotInit() {
@@ -38,14 +38,14 @@ public class Robot extends IterativeRobot {
 
 		m_robotDrive = new MecanumDrive(frontLeft, rearLeft, frontRight, rearRight);
 
-		m_stick = new Joystick(kJoystickChannel);
+		driveStick = new Joystick(kJoystickChannel);
 	}
 
 	@Override
 	public void teleopPeriodic() {
 		// Use the joystick X axis for lateral movement, Y axis for forward
 		// movement, and Z axis for rotation.
-		m_robotDrive.driveCartesian(m_stick.getX(), m_stick.getY(),
-				m_stick.getZ(), 0.0 );
+		m_robotDrive.driveCartesian(driveStick.getX(), driveStick.getY(),
+				driveStick.getZ(), 0.0 );
 	}
 }
